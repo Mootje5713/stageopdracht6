@@ -1,0 +1,27 @@
+.loginstatus {
+    display: flex;
+    justify-content: end;
+}
+
+.title {
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    width: 50%;
+    margin: 30px auto;
+    border-radius: 5px;
+    padding: 10px;
+    background: #fff8dc;
+    border: 1px solid #6b8e23;
+}
+
+.btn {
+    margin: 30px auto;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #6b8e23;
+    cursor: pointer;
+}
