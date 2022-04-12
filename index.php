@@ -42,23 +42,23 @@
                 <tr>
                 <?php if(($row['deleted']) == ''):?>
                     <h2><?php echo $row['verslag']?></h2>
+                    <button class="btn" onclick="window.location.href='updateverslag.php?id=<?php echo $row['id'] ?>'">Stageverslag wijzigen</button>
                     <?php if($row['uren'] <=1): ?>
-                    <h2>Je hebt een uur stage gelopen</h2>
+                        <h2>Je hebt een uur stage gelopen</h2>
+                        <h2><?php echo date("Y-mM-l"); ?></h2>
                     <?php else: ?>
-                    <h2>Je hebt <?php echo $row['uren']?> uur stage gelopen</h2>
+                        <h2>Je hebt <?php echo $row['uren']?> uur stage gelopen</h2>
                     <?php endif; ?>
-                    <a href="delete.php?id=<?php echo $row['id']?>"><h3>verslag verwijderen<h3></a>
-                    <a href="update.php?id=<?php echo $row['id']?>"><h3>verslag wijzigen</h3></a>
+                    <button class="btn" onclick="window.location.href='delete.php?id=<?php echo $row['id'] ?>'">Stagedag verwijderen</button>
+                    <button class="btn" onclick="window.location.href='updateuren.php?id=<?php echo $row['id'] ?>'">Stageuren wijzigen</button>
                 <?php else: ?>
-                    <a href="undelete.php?id=<?php echo $row['id']?>"><h3>verslag terughalen</h3></a>
-                    <a href="erase.php?id=<?php echo $row['id']?>"><h3>verslag helemaal verwijderen</h3></a>
-                <?php endif; ?>
+                    <button class="btn" onclick="window.location.href='undelete.php?id=<?php echo $row['id'] ?>'">Stagedag terughalen</button>
+                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase.php?id=<?php echo $row['id'] ?>'">Definitief Verwijderen</button>
+                    <?php endif; ?>
                 </tr>
             </table>
         </li>
     </ul>
 <?php endforeach; ?>
-
 <?php endif; ?>
-
-<?php include "footer.php";?>
+<?php include "footer.php" ?>
