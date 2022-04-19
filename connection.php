@@ -22,10 +22,10 @@ if (!isset($_SESSION['user_id']) && $_SERVER['REQUEST_URI']!='/stageopdracht6/lo
 }
 
 if ($pos !== false) {
+    $pos = strpos($mystring, $findme);
     if (isset($_SESSION['praktijkbegeleider_user_id'])) {
         header("Location: index.php");
         $mystring = $_SERVER['REQUEST_URI'];
         $findme = '_pb';
-        $pos = strpos($mystring, $findme);
     }
 }
