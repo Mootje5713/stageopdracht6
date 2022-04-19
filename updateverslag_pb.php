@@ -1,16 +1,15 @@
 <?php
-include "connection.php";
+include "connection.php"; 
 if (isset($_POST['submit'])) {
     $id = $_GET['id'];
     $verslag = $_POST['verslag'];
     $user_id = $_SESSION["user_id"];
-    $query = "UPDATE `reports` SET verslag = '$verslag' WHERE user_id = 
-    $user_id AND id = $id"; 
+    $query = "UPDATE `reports` SET verslag = '$verslag' WHERE id = $id"; 
     $result = $conn->query($query);
     if ( $result === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;
     } else {
-        header("Location: user.php?id=");
+        header("Location: user.php?id=$id");
     }
 }
 

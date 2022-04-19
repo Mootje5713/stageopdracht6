@@ -17,7 +17,7 @@
     } else {
         $i=0;
     }
-    $date = date('Y-m-d', strtotime('-'.($i*7).' days'));
+    echo "<button> vorige week" . $date = date('Y-m-d', strtotime('-'.($i*7).' days')) . "</button>";
     $query = "SELECT * FROM reports WHERE user_id = '".$_SESSION['user_id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY id DESC";
     $result=$conn->query($query);
     if ($result === false) {

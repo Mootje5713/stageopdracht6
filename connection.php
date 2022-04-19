@@ -17,9 +17,12 @@ if ($conn->connect_error) {
 //echo $_SERVER['REQUEST_URI'];
 
 if (!isset($_SESSION['user_id']) && $_SERVER['REQUEST_URI']!='/stageopdracht6/login.php'
-&& $_SERVER['REQUEST_URI']!='/stageopdracht6/login2.php'
-&& $_SERVER['REQUEST_URI']!='/stageopdracht6/register.php'
-&& $_SERVER['REQUEST_URI']!='/stageopdracht6/register2.php') {
+&& $_SERVER['REQUEST_URI']!='/stageopdracht6/register.php') {
     header("Location: login.php");
 }
 
+die(var_dump(basename("/stageopdracht6/manual.php")));
+
+//if () . PHP_EOL) {
+    //if (isset($_SESSION['praktijkbegeleider_user_id'])) {
+        //header("Location: index.php");

@@ -1,5 +1,20 @@
 <?php
     include "connection.php"; 
+    if (isset($_SESSION['praktijkbegeleider_user_id'])) {
+        header("Location: index.php");
+    } 
+    $query = "SELECT * FROM reports ORDER BY id DESC";
+    $result=$conn->query($query);
+    if ($result === false) {
+        echo "error" . $query . "<br />" . $conn->error;
+    } else {
+        if ($result->num_rows>0) {
+            while($row=$result->fetch_assoc()) {
+                $report[] = $row;
+            }
+        }
+    }
+
     if (!isset($_GET['id'])) {
         header("Location: manual.php");
     }
@@ -12,18 +27,6 @@
         echo "error" . $report . "<br />" . $conn->error;
         }
 }
-    $query = "SELECT * FROM reports WHERE user_id = '" . $_GET['id'] . "' ORDER BY id DESC";
-    $result=$conn->query($query);
-    if ($result === false) {
-        echo "error" . $query . "<br />" . $conn->error;
-    } else {
-        if ($result->num_rows>0) {
-            while($row=$result->fetch_assoc()) {
-                $report[] = $row;
-            }
-        }
-    }
-
     if (isset($_GET['page'])) {
         $i=intval($_GET['page']);
     } else {
@@ -61,7 +64,7 @@
                 <tr>
                 <?php if(($row['deleted']) == ''):?>
                     <h2><?php echo $row['verslag']?></h2>
-                    <button class="btn" onclick="window.location.href='updateverslag.php?id=<?php echo $row['id'] ?>'">Stageverslag wijzigen</button>
+                    <button class="btn" onclick="window.location.href='updateverslag_pb.php?id=<?php echo $row['id'] ?>'">Stageverslag wijzigen</button>
                     <?php if($row['uren'] <=1): ?>
                         <h2>Je hebt een uur stage gelopen</h2>
                         <h2><?php echo $row['timestamp']; ?></h2>
