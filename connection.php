@@ -21,7 +21,6 @@ if (!isset($_SESSION['user_id']) && $_SERVER['REQUEST_URI']!='/stageopdracht6/lo
     header("Location: login.php");
 }
 
-die(var_dump(basename("/stageopdracht6/manual.php")));
 
 //if () . PHP_EOL) {
     //if (isset($_SESSION['praktijkbegeleider_user_id'])) {

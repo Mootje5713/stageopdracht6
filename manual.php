@@ -1,5 +1,6 @@
 <?php 
 include "connection.php";
+die(var_dump(basename("/stageopdracht6/md"). PHP_EOL));
 if (isset($_SESSION['praktijkbegeleider_user_id'])) {
     header("Location: index.php");
 } 
