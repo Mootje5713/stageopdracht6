@@ -14,13 +14,19 @@
                 {
                     $_SESSION["user_id"]=$row['id'];
                     $_SESSION["username"]=$row['username'];
+                    $_SESSION["praktijkbegeleider_user_id"]=$row['praktijkbegeleider_user_id'];
+
                 }
             }
         }
     }
     if (isset($_SESSION['user_id'])) {
-        header('Location: index.php');
-    } 
+        if (isset($_SESSION['praktijkbegeleider_user_id'])) {
+            header('Location: index.php');
+        } else {
+            header('Location: manual.php');
+        }
+    }
     $conn->close();
 ?>
 
@@ -30,7 +36,9 @@
         password <input type="password" name="wachtwoord" id="wachtwoord" required>
         <br>
         <input type="submit" name="submit" value="sign in">
-    nog geen account <a href="register.php">klik hier</a>
+        <br>
+        nog geen account <a href="register.php">klik hier</a>
+        <br>
     </form>
 </body>
 </html>

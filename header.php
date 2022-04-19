@@ -11,7 +11,7 @@
     <div class="loginstatus">
         <?php echo $_SESSION['username']; ?>
             &nbsp;
-        <a href="logout.php">logout</a>
+            <button onclick="window.location.href='logout.php'">Logout</button>
     </div>
     <div class="title">
         <h1>Eduarte</h1>
