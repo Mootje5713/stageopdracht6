@@ -72,11 +72,11 @@
                         <h2>Je hebt <?php echo $row['uren']?> uur stage gelopen</h2>
                         <h2><?php echo $row['timestamp']; ?></h2>
                     <?php endif; ?>
-                    <button class="btn" onclick="window.location.href='delete.php?id=<?php echo $row['id'] ?>'">Stagedag verwijderen</button>
-                    <button class="btn" onclick="window.location.href='updateuren.php?id=<?php echo $row['id'] ?>'">Stageuren wijzigen</button>
+                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id'] ?>'">Stagedag verwijderen</button>
+                    <button class="btn" onclick="window.location.href='updateuren_pb.php?id=<?php echo $row['id'] ?>'">Stageuren wijzigen</button>
                 <?php else: ?>
-                    <button class="btn" onclick="window.location.href='undelete.php?id=<?php echo $row['id'] ?>'">Stagedag terughalen</button>
-                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase.php?id=<?php echo $row['id'] ?>'">Definitief Verwijderen</button>
+                    <button class="btn" onclick="window.location.href='undelete_pb.php?id=<?php echo $row['id'] ?>'">Stagedag terughalen</button>
+                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase_pb.php?id=<?php echo $row['id'] ?>'">Definitief Verwijderen</button>
                     <?php endif; ?>
                 </tr>
             </table>
