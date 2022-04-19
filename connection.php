@@ -15,13 +15,19 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 //echo $_SERVER['REQUEST_URI'];
-
+var_dump($_SERVER['REQUEST_URI']);
 if (!isset($_SESSION['user_id']) && $_SERVER['REQUEST_URI']!='/stageopdracht6/login.php'
 && $_SERVER['REQUEST_URI']!='/stageopdracht6/register.php') {
     header("Location: login.php");
 }
 
+$mystring = $_SERVER['REQUEST_URI'];
+$findme = '_pb';
+$pos = strpos($mystring, $findme);
 
-//if () . PHP_EOL) {
-    //if (isset($_SESSION['praktijkbegeleider_user_id'])) {
-        //header("Location: index.php");
+if ($pos === false) {
+    echo "The string '$mystring' was not found in the string $findme";
+} else {
+    echo "The string '$mystring' was found in the string $findme";
+    echo " and exists at position $pos";
+}
