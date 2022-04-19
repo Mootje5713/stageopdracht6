@@ -25,12 +25,11 @@ $mystring = $_SERVER['REQUEST_URI'];
 $findme = '_pb';
 $pos = strpos($mystring, $findme);
 
-if ($pos === false) {
+if ($pos !== false) {
     echo "The string '$findme' was not found in the string $mystring";
 } else {
     if (isset($_SESSION['praktijkbegeleider_user_id'])) {
         header("Location: index.php");
     }
     echo "The string '$findme' was found in the string $mystring";
-    echo " and exists at position $pos";
 }
