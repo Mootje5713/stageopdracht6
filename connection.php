@@ -26,8 +26,8 @@ $findme = '_pb';
 $pos = strpos($mystring, $findme);
 
 if ($pos === false) {
-    echo "The string '$mystring' was not found in the string $findme";
+    echo "The string '$findme' was not found in the string $mystring";
 } else {
-    echo "The string '$mystring' was found in the string $findme";
+    echo "The string '$findme' was found in the string $mystring";
     echo " and exists at position $pos";
 }
