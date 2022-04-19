@@ -3,7 +3,6 @@ include "connection.php";
 if (isset($_POST['submit'])) {
     $id = $_GET['id'];
     $verslag = $_POST['verslag'];
-    $user_id = $_SESSION["user_id"];
     $query = "UPDATE `reports` SET verslag = '$verslag' WHERE id = $id"; 
     $result = $conn->query($query);
     if ( $result === FALSE) {

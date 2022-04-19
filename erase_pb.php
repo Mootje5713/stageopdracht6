@@ -4,7 +4,6 @@ include "connection.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $user_id = $_SESSION['user_id'];
     $query = "DELETE FROM `reports` WHERE id =$id"; 
     $result = $conn->query($query);
     if ( $result === FALSE) {
