@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
         echo "error" . $query . "<br />" . $conn->error;
         return FALSE;
     } else {
-        header("Location: index.php");
+        header("Location: user.php?id=$id");
     }
 }
 $conn->close();

@@ -16,8 +16,8 @@
         $i=intval($_GET['page']);
     } else {
         $i=0;
-    }     
-    echo $date = date('Y-m-d', strtotime('-'.($i*7).' days'));
+    }  
+    $date = date('Y-m-d', strtotime('-'.($i*7).' days')) ;
     $query = "SELECT * FROM reports WHERE user_id = '".$_SESSION['user_id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY id DESC";
     $result=$conn->query($query);
     if ($result === false) {
@@ -39,6 +39,10 @@
     <a href="addreport.php">Voeg je verslag</a>
 </div>
 <h1><?php echo "Week - " . date("W",  strtotime($date)); ?></h1>
+<button class="btn" onclick="window.location.href='index.php?page=<?php echo $i+1 ?>'">
+Vorige week</button>
+<button class="btn" onclick="window.location.href='index.php?page=<?php echo $i-1 ?>'">
+Volgende week</button>
 
 
 <?php if(!isset($report)):

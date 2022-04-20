@@ -7,5 +7,6 @@
     <br>
     <input type="number" name="uren" required>
     <br>
-    <input type="submit" class="btn" name="submit">
+    <button class="btn" name="submit" onclick="if(confirm('Weet je het zeker? na het versturen kan nog alleen de praktijkbegeleieder de verslagen en uren wijzigen'))">Verstuur</button>
+
 </form>

@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
     if ( $result === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;
     } else {
-        header("Location: index.php");
+        header("Location: user.php?id=$id");
     }
     
 }
