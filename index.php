@@ -36,7 +36,7 @@
     include "header.php";
 ?>
 <div class="title">
-    <a href="addreport.php">Voeg je verslag</a>
+    <a href="addreport.php">Voeg je verslag en geloopte uren toe</a>
 </div>
 <h1><?php echo "Week - " . date("W",  strtotime($date)); ?></h1>
 <button class="btn" onclick="window.location.href='index.php?page=<?php echo $i+1 ?>'">

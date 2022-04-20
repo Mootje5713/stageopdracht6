@@ -50,6 +50,7 @@
 <?php
     include "header.php";
 ?>
+<a href="manual.php">Terug</a>
 
 <h1><?php echo "Week - " . date("W",  strtotime($date)); ?></h1>
 
