@@ -24,7 +24,6 @@ function updateTotaluren($user_id, $conn) {
     } else {
         return true;
     }
-
 }
 
 ?>

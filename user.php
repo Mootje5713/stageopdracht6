@@ -52,9 +52,9 @@ $conn->close();
 <h1><?php echo "Week - " . date("W",  strtotime($date)); ?></h1>
 <?php foreach($totaal as $row): ?>
     <?php if($row['totaal'] == 0): ?>
-        <p>Deze stagiar heeft 0 uren gemaakt</p>
+        <p>De stagiar heeft deze week 0 uren gemaakt</p>
     <?php else: ?>
-        <p>Deze stagiar heeft in totaal <?php echo $row['totaal']?> uren gemaakt</p>
+        <p>De stagiar heeft deze week in totaal <?php echo $row['totaal']?> uren gemaakt</p>
     <?php endif; ?>
 <?php endforeach; ?>
 <button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i+1 ?>'">
@@ -82,11 +82,11 @@ Volgende week</button>
                         <h2>Je hebt <?php echo $row['uren']?> uur stage gelopen</h2>
                         <h2><?php echo $row['timestamp']; ?></h2>
                     <?php endif; ?>
-                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id'] ?>'">Stagedag verwijderen</button>
-                    <button class="btn" onclick="window.location.href='updateuren_pb.php?id=<?php echo $row['id'] ?>'">Stageuren wijzigen</button>
+                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Stagedag verwijderen</button>
+                    <button class="btn" onclick="window.location.href='updateuren_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Stageuren wijzigen</button>
                 <?php else: ?>
-                    <button class="btn" onclick="window.location.href='undelete_pb.php?id=<?php echo $row['id'] ?>'">Stagedag terughalen</button>
-                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase_pb.php?id=<?php echo $row['id'] ?>'">Definitief Verwijderen</button>
+                    <button class="btn" onclick="window.location.href='undelete_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Stagedag terughalen</button>
+                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Definitief Verwijderen</button>
                     <?php endif; ?>
                 </tr>
             </table>

@@ -27,7 +27,6 @@ $conn->close();
     echo "<h3>Nog geen stagaires gevonden!!</h3>";    
         else: 
 ?>
-
 <?php foreach($users as $row): ?>
     <ul>
         <li>
