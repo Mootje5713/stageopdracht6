@@ -1,10 +1,11 @@
 <?php
     include "connection.php";
-    if(isset($_POST['username']) && ($_POST['wachtwoord'])) {
+    if(isset($_POST['username']) && ($_POST['wachtwoord']) && ($_POST['totale_uren_stage'])) {
         $username =  $_POST['username'];
         $password =  $_POST['wachtwoord'];
-        $user = "INSERT INTO `users`(username, wachtwoord)
-        VALUES ('$username', '$password')";
+        $totale_uren_stage = $_POST['totale_uren_stage'];
+        $user = "INSERT INTO `users`(username, wachtwoord, totale_uren_stage)
+        VALUES ('$username', '$password', '$totale_uren_stage')";
         header("location: login.php");
         if ( $conn->query($user) === FALSE) {
             echo "error" . $user . "<br />" . $conn->error;
@@ -23,9 +24,14 @@
 </head>
 <body>
     <form action="" method="POST">
-        username <input type="text" name="username" id="username" required>
+        <label for="username">username</label>
+        <input type="text" name="username" id="username" required>
         <br>
-        password <input type="password" name="wachtwoord" id="wachtwoord" required>
+        <label for="wachtwoord">wachtwoord</label>
+        <input type="password" name="wachtwoord" id="wachtwoord" required>
+        <br>
+        <label for="totale_uren_stage">Aantal stage uren</label>
+        <input type="number" name="totale_uren_stage" id="totale_uren_stage" required>
         <br>
         <input type="submit" name="submit" value="sign up">
         </form>

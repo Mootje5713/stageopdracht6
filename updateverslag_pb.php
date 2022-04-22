@@ -1,5 +1,21 @@
 <?php
 include "connection.php"; 
+if (isset($_GET['id'])) {
+    $query = "SELECT verslag, user_id FROM `reports` WHERE id = ". $_GET['id'] . "";
+    $result = $conn->query($query);
+    if ( $result === FALSE) {
+        echo "error" . $query . "<br />" . $conn->error;
+        return FALSE;
+    } else {
+        if ($result->num_rows>0) {
+            while($row=$result->fetch_assoc()) {
+                $verslag = $row['verslag'];
+                $user_id = $row['user_id'];
+            }
+        }
+    }
+}
+
 if (isset($_POST['submit'])) {
     $id = $_GET['id'];
     $verslag = $_POST['verslag'];
@@ -8,22 +24,7 @@ if (isset($_POST['submit'])) {
     if ( $result === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;
     } else {
-        header("Location: user.php?id=$id");
-    }
-}
-
-if (isset($_GET['id'])) {
-    $query = "SELECT verslag FROM `reports` WHERE id = ". $_GET['id'] . "";
-    $result = $conn->query($query);
-    if ( $result === FALSE) {
-        echo "error" . $query . "<br />" . $conn->error;
-        return FALSE;
-    } else {
-        if ($result->num_rows>0) {
-            while($row=$result->fetch_assoc()) {
-                $data = $row;
-            }
-        }
+        header("Location: user.php?id=" .$user_id . "");
     }
 }
 $conn->close();

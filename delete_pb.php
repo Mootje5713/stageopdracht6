@@ -1,7 +1,7 @@
 
 <?php
 include "connection.php";
-
+include "functions.php";
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $query = "UPDATE `reports` SET deleted = NOW() WHERE id=$id"; 
@@ -10,7 +10,8 @@ if (isset($_GET['id'])) {
         echo "error" . $query . "<br />" . $conn->error;
         return FALSE;
     } else {
-        header("Location: user.php?id=$id");
+        updateTotaluren($user_id, $conn);
+        header("Location: user.php?id=" . $user_id . "");
     }
 }
 $conn->close();

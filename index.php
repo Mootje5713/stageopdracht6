@@ -17,8 +17,8 @@
     } else {
         $i=0;
     }  
-    $date = date('Y-m-d', strtotime('-'.($i*7).' days')) ;
-    $query = "SELECT * FROM reports WHERE user_id = '".$_SESSION['user_id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY id DESC";
+    $date = date('Y-m-d', strtotime('-'.($i*7).' days'));
+    $query = "SELECT * FROM reports WHERE user_id = '".$_SESSION['user_id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY timestamp DESC";
     $result=$conn->query($query);
     if ($result === false) {
         echo "error" . $query . "<br />" . $conn->error;
@@ -29,6 +29,18 @@
             }
         }
     }
+
+    $query = "SELECT sum(uren) as totaal FROM reports WHERE user_id = '".$_SESSION['user_id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY timestamp DESC";
+    $result=$conn->query($query);
+    if ($result === false) {
+        echo "error" . $query . "<br />" . $conn->error;
+    } else {
+        if ($result->num_rows>0) {
+            while($row=$result->fetch_assoc()) {
+                $totaal[] = $row;
+            }
+        }
+    }
     $conn->close();
 ?>
 
@@ -36,9 +48,16 @@
     include "header.php";
 ?>
 <div class="title">
-    <a href="addreport.php">Voeg je stageverslag en je geloopte stageuren toe</a>
+    <a href="addreport.php">Voeg je stageverslag en je gemaakte stageuren toe</a>
 </div>
 <h1><?php echo "Week - " . date("W",  strtotime($date)); ?></h1>
+<?php foreach($totaal as $row): ?>
+    <?php if($row['totaal'] == 0): ?>
+        <p>Je hebt deze week 0 uren gemaakt</p>
+    <?php else: ?>
+        <p>Je hebt deze week in totaal <?php echo $row['totaal']?> uren gemaakt</p>
+    <?php endif; ?>
+<?php endforeach; ?>
 <button class="btn" onclick="window.location.href='index.php?page=<?php echo $i+1 ?>'">
 Vorige week</button>
 <button class="btn" onclick="window.location.href='index.php?page=<?php echo $i-1 ?>'">

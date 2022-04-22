@@ -1,9 +1,13 @@
 <form method="POST" action="">
-    <label for="verslag">Wat heb je vandaag allemaal gedaan?</label>
+    <label for="verslag">Kies je datum</label>
+    <br>
+    <input type="date" name="timestamp" required>
+    <br>
+    <label for="verslag">Wat heb je allemaal gedaan?</label>
     <br>
     <textarea id="verslag" name="verslag" rows="4" cols="50" maxlength="3000" required></textarea>
     <br>
-    <label for="uren">Hoeveel uren heb je vandaag gelopen?</label>
+    <label for="uren">Hoeveel uren heb je gemaakt?</label>
     <br>
     <input type="number" name="uren" required>
     <br>

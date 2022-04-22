@@ -1,23 +1,9 @@
 <?php
     include "connection.php"; 
+    include "functions.php";
     if (isset($_SESSION['praktijkbegeleider_user_id'])) {
         header("Location: index.php");
     } 
-    $query = "SELECT * FROM reports ORDER BY id DESC";
-    $result=$conn->query($query);
-    if ($result === false) {
-        echo "error" . $query . "<br />" . $conn->error;
-    } else {
-        if ($result->num_rows>0) {
-            while($row=$result->fetch_assoc()) {
-                $report[] = $row;
-            }
-        }
-    }
-
-    if (!isset($_GET['id'])) {
-        header("Location: manual.php");
-    }
     if (isset($_GET['report'])) {
         $report = $_GET['report'];
         $report = "INSERT INTO `reports` (verslag)
@@ -33,7 +19,7 @@
         $i=0;
     }
     $date = date('Y-m-d', strtotime('-'.($i*7).' days'));
-    $query = "SELECT * FROM reports WHERE user_id = '".$_SESSION['user_id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY id DESC";
+    $query = "SELECT * FROM reports WHERE user_id = '".$_GET['id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY id DESC";
     $result=$conn->query($query);
     if ($result === false) {
         echo "error" . $query . "<br />" . $conn->error;
@@ -44,7 +30,18 @@
             }
         }
     }
-    $conn->close();
+    $query = "SELECT sum(uren) as totaal FROM reports WHERE user_id = '".$_GET['id']."' AND WEEK(`timestamp`, 1)= WEEK('$date', 1) ORDER BY timestamp DESC";
+    $result=$conn->query($query);
+    if ($result === false) {
+        echo "error" . $query . "<br />" . $conn->error;
+    } else {
+        if ($result->num_rows>0) {
+            while($row=$result->fetch_assoc()) {
+                $totaal[] = $row;
+            }
+        }
+    }
+$conn->close();
 ?>
 
 <?php
@@ -53,10 +50,22 @@
 <a href="manual.php">Terug</a>
 
 <h1><?php echo "Week - " . date("W",  strtotime($date)); ?></h1>
+<?php foreach($totaal as $row): ?>
+    <?php if($row['totaal'] == 0): ?>
+        <p>Deze stagiar heeft 0 uren gemaakt</p>
+    <?php else: ?>
+        <p>Deze stagiar heeft in totaal <?php echo $row['totaal']?> uren gemaakt</p>
+    <?php endif; ?>
+<?php endforeach; ?>
+<button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i+1 ?>'">
+Vorige week</button>
+<button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i-1 ?>'">
+Volgende week</button>
 
 <?php if(!isset($report)):
     echo "<h3>Nog geen verslagen of uren ingevuld!!</h3>";
     else:
+        
     ?>
 <?php foreach($report as $row): ?>
     <ul>

@@ -1,5 +1,6 @@
 <?php 
 include "connection.php";
+include "functions.php";
 if (isset($_SESSION['praktijkbegeleider_user_id'])) {
     header("Location: index.php");
 } 
@@ -15,6 +16,7 @@ if ( $result === FALSE) {
         }
     }
 }
+$conn->close();
 ?>
 
 <?php include "header.php" ?>
@@ -30,7 +32,8 @@ if ( $result === FALSE) {
     <ul>
         <li>
             <a href="user.php?id=<?php echo $row['id'] ?>">
-            <?php echo $row['username']?>
+            <?php echo $row['username']?> 
+            <?php echo $row['totaal']?>/ <?php echo $row['totale_uren_stage']?>
             </a>
         </li>
     </ul>
