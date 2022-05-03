@@ -21,7 +21,7 @@ $conn->close();
 
 <?php include "header.php" ?>
 
-<h1>Jouw stagaires</h1>
+<h1>Jouw stagair(es)</h1>
 
 <?php if (!isset($users)): 
     echo "<h3>Nog geen stagaires gevonden!!</h3>";    

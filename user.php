@@ -41,6 +41,8 @@
             }
         }
     }
+
+$returnurl = urlencode("user.php?id=" . $_GET['id'] . "&page=" . $i . "");
 $conn->close();
 ?>
 
@@ -74,7 +76,7 @@ Volgende week</button>
                 <tr>
                 <?php if(($row['deleted']) == ''):?>
                     <h2><?php echo $row['verslag']?></h2>
-                    <button class="btn" onclick="window.location.href='updateverslag_pb.php?id=<?php echo $row['id'] ?>'">Stageverslag wijzigen</button>
+                    <button class="btn" onclick="window.location.href='updateverslag_pb.php?id=<?php echo $row['id'] ?>'">Stageverslag wijzigen</button>                    
                     <?php if($row['uren'] <=1): ?>
                         <h2>Je hebt een uur stage gelopen</h2>
                         <h2><?php echo $row['timestamp']; ?></h2>
@@ -82,12 +84,14 @@ Volgende week</button>
                         <h2>Je hebt <?php echo $row['uren']?> uur stage gelopen</h2>
                         <h2><?php echo $row['timestamp']; ?></h2>
                     <?php endif; ?>
-                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Stagedag verwijderen</button>
-                    <button class="btn" onclick="window.location.href='updateuren_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Stageuren wijzigen</button>
-                <?php else: ?>
-                    <button class="btn" onclick="window.location.href='undelete_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Stagedag terughalen</button>
-                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase_pb.php?id=<?php echo $row['id'] ?>&page=<?php echo $_GET['page'] ?>'">Definitief Verwijderen</button>
+                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag verwijderen</button>
+                    <button class="btn" onclick="window.location.href='updateuren_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stageuren wijzigen</button>                
+                    <?php else: ?>
+                    <button class="btn" onclick="window.location.href='undelete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag terughalen</button>
+                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Definitief Verwijderen</button>                    
                     <?php endif; ?>
+                    <br>
+                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Goedkeuren</button>                    
                 </tr>
             </table>
         </li>

@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
         return FALSE;
     } else {
         updateTotaluren($user_id, $conn);
-        header("Location: user.php?id=" . $user_id . "&page=" . $_GET['page']. "");
+        header("Location: ". urldecode($_GET['returnurl']));
     }
 }
 $conn->close();

@@ -69,11 +69,19 @@ Volgende week</button>
     else:
     ?>
 <?php foreach($report as $row): ?>
-    <ul>
-        <li>
-            <table>
-                <tr>
+<ul>
+    <tr>
+        <table>
                 <?php if(($row['deleted']) == ''):?>
+                    <?php if($row['is_accepted'] == NULL): ?>
+                    <div class="wait">
+                        <h2>Ingediend</h2>
+                    </div>
+                    <?php else: ?>
+                    <div class="wait">
+                        <h2>Goedgekeurd</h2>
+                    </div>
+                    <?php endif; ?>
                     <h2><?php echo $row['verslag']?></h2>
                     <?php if($row['uren'] <=1): ?>
                         <h2>Je hebt een uur stage gelopen</h2>
@@ -83,10 +91,9 @@ Volgende week</button>
                         <h2><?php echo $row['timestamp']; ?></h2>
                     <?php endif; ?>
                 <?php else: ?>
-                    <?php endif; ?>
-                </tr>
+                <?php endif; ?>
             </table>
-        </li>
+        </tr>
     </ul>
 <?php endforeach; ?>
 <?php endif; ?>

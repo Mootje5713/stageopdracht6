@@ -4,7 +4,7 @@ include "functions.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "UPDATE `reports` SET deleted = NOW() WHERE id=$id"; 
+    $query = "UPDATE `reports` SET is_accepted = NOW() WHERE id=$id"; 
     $result = $conn->query($query);
     if ( $result === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;

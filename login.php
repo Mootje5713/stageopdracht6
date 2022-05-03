@@ -15,7 +15,6 @@
                     $_SESSION["user_id"]=$row['id'];
                     $_SESSION["username"]=$row['username'];
                     $_SESSION["praktijkbegeleider_user_id"]=$row['praktijkbegeleider_user_id'];
-
                 }
             }
         }
