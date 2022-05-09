@@ -72,30 +72,33 @@ Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
 <body class="authenticator--background authenticator--page">
 	<div id="id2" style="display:none"></div>
 	<section class="authenticator--wrapper">
-    <a href="login.php">Terug</a>
     <div class="authenticator--body is-small">
 		<div class="authenticator--panel">
             <form action="" method="POST">
             <div class="authenticator--form-field">
 				<input type="text" value="" name="username" id="id6" placeholder="Gebruikersnaam" class=""/>
 			</div>
-            <br>
             <div class="authenticator--form-field">
 				<input type="text" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" class=""/>
 			</div>
-        <label for="praktijkbegeleider">praktijkbegeleider</label>
-        <select name="praktijkbegeleider_user_id" id="praktijkbegeleider_user_id"> 
+        <div class="authenticator--form-field">
+            <select name="praktijkbegeleider_user_id" id="praktijkbegeleider_user_id"> 
             <?php foreach($praktijkbegeleiders as $row): ?>
-                <option value="<?php echo $row['id']; ?>"><?php echo $row['username']; ?></option>
+                <option value="<?php echo $row['id']; ?>">praktijkbegeleider: <?php echo $row['username']; ?></option>
             <?php endforeach; ?>
-        </select>
-        <br>
-        <label for="totale_uren_stage">Aantal stage uren</label>
-        <input type="number" name="totale_uren_stage" id="totale_uren_stage" required>
-        <br>
+            </select>
+        </div>
+        <div class="authenticator--form-field">
+            <input type="number" name="totale_uren_stage" id="totale_uren_stage" placeholder="totale_uren_stage" required>
+        </div>
         <input style="background: #0bca6a; border: 0;" type="submit" class="button-action authenticator--submit" id="id4" name="submit" value="Registreer">
         </form>
-        Ben je een praktijkbegeleider <a href="register2.php">klik hier</a>
+        </div>
+        <ul class="authenticator-signin--links">
+		<li><a href="register2.php">Ben je praktijkbegeleider? klik hier</a></li>
+        <li><a href="login.php">Terug</a></li>
+	</ul>
+    </div>
     </section>
 </body>
 </html>

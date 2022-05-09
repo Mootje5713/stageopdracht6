@@ -57,20 +57,22 @@ Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
 <body class="authenticator--background authenticator--page">
 	<div id="id2" style="display:none"></div>
 	<section class="authenticator--wrapper">
-    <a href="login.php">Terug</a>
     <div class="authenticator--body is-small">
 		<div class="authenticator--panel">
             <form action="" method="POST">
             <div class="authenticator--form-field">
 				<input type="text" value="" name="username" id="id6" placeholder="Gebruikersnaam" class=""/>
 			</div>
-            <br>
             <div class="authenticator--form-field">
 				<input type="text" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" class=""/>
 			</div>
             <input style="background: #0bca6a; border: 0;" type="submit" class="button-action authenticator--submit" id="id4" name="submit" value="Registreer">
-    </form>
+        </form>
+    </div>
+    <ul class="authenticator-signin--links">
+        <li><a href="login.php">Terug</a></li>
+	</ul>
+    </div>
     </section>
 </body>
 </html>
-</>

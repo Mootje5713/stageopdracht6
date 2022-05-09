@@ -4,5 +4,5 @@
     <br>
     <textarea id="verslag" name="verslag"rows="4" cols="50" maxlength="3000" required><?php echo $verslag; ?></textarea>
     <br>
-    <input type="submit" class="btn" name="submit">
+    <input type="submit" class="btn" name="submit" value="Wijzig">
 </form>

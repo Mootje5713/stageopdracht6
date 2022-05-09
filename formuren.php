@@ -4,6 +4,6 @@
     <br>
     <input type="number" name="uren" value="<?php echo $uur; ?>" required>
     <br>
-    <input type="submit" class="btn" name="submit">
+    <input type="submit" class="btn" name="submit" value="wijzig">
 </form>
 
