@@ -91,6 +91,13 @@ $days[6] = "za";
 
 <body>
     <div class="l-container">
+        <div class="navigation-header">
+            <div class="navigation-header--logo">
+                <a><img src="https://talnet-student.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/img/logo-eduarte-ver-1650447256000.svg" alt="EduArtelogo"></a>
+            </div>
+            <div class="omgevingIndicator productieomgeving"></div>
+            <i class="navigation-header--close-navigation js-navigation flaticon x-1" id="id1f"></i>
+        </div>
         <div class="l-flex-content">
             <div class="header">
                 <h2>
@@ -98,7 +105,7 @@ $days[6] = "za";
                         Stage
                     </a>
                     <i class="flaticon right-2"></i>
-                    <span class="is-fixed is-lastcrumb is-single">Stagiair</span>
+                    <span class="is-fixed is-lastcrumb is-single">Stagiairs</span>
                 </h2>
             </div>
             <h2 class="is-header">
@@ -126,7 +133,6 @@ $days[6] = "za";
                                         <?php if (($row['deleted']) == '') : ?>
                                             <span>
                                                 <?php echo $row['verslag'] ?>
-                                                <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag verwijderen</button>
                                             </span>
                                         <?php else : ?>
                                             <button class="btn" onclick="window.location.href='undelete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag terughalen</button>
@@ -135,10 +141,12 @@ $days[6] = "za";
                                         <?php if ($row['uren'] <= 1) : ?>
                                     <h2> een uur stage gelopen</h2>
                                     <h2><?php echo $row['timestamp']; ?></h2>
+                                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag verwijderen</button>
                                 <?php else : ?>
                                     <p><?php echo $row['uren'] ?> uur stage gelopen</p>
                                     &nbsp;
                                     <p><?php echo $row['timestamp']; ?></p>
+                                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag verwijderen</button>
                                 <?php endif; ?>
                                 </p>
                                 </div>
@@ -147,6 +155,9 @@ $days[6] = "za";
                         <button class="btn" onclick="window.location.href='updateverslag_pb.php?id=<?php echo $row['id'] ?>'">Stageverslag wijzigen</button>
                         <button class="btn" onclick="window.location.href='updateuren_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stageuren wijzigen</button>
                     </div>
+                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Goedkeuren</button>
+                    <br>
+                    <br>
                 <?php endforeach; ?>
             <?php endif; ?>
             <button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i + 1 ?>'">
@@ -155,7 +166,6 @@ $days[6] = "za";
                 Volgende week</button>
             <br>
             <br>
-            <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Goedkeuren</button>
         </div>
     </div>
     <?php include "footer.php" ?>

@@ -105,7 +105,6 @@ $days[6] = "za";
 
                     <li class="is-selected"><a href="index.php" title="Stage"><i class="flaticon suitcase-1"></i>Stage</a></li>
 
-
                     <li><a href="manual.php" title="Stagiairs"><i class="flaticon open-book-2"></i>Stagiairs</a></li>
 
                 </ul>

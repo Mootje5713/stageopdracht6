@@ -110,35 +110,87 @@ $conn->close();
                             <span class="is-soft"></span>
                         </h2>
                         <?php foreach ($users as $row) : ?>
-                            <div class="week-plan">
-                                <div class="task has-popout">
-                                    <div class="task--summary popout--toggle js-popout-toggle">
-                                        <p>
-                                            <span>
-                                                <a href="user.php?id=<?php echo $row['id'] ?>">
-                                                    <?php echo $row['username'] ?>
-                                                    <?php echo $row['totaal'] ?>/ <?php echo $row['totale_uren_stage'] ?>
-                                                </a>
-                                            </span>
-                                        </p>
-                                        <div class="popout">
-                                            <div class="popout--body popout--aside emoticon--wrapper">
-                                                <div class="popout--emotion is-happy">
-                                                    <i class="emoticon"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="popout--options">
-                                            <ul>
-                                                <li></li>
-                                                <li></li>
-                                                <li></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                            <div class="content has-sidebar">
+                                <div class="l-full overzicht" id="id64">
+                                    <div style="position: absolute; top: 22.5px;"></div>
+                                    <div style="position: absolute; top: 22.5px;"></div>
+                                    <table class="table s5-table tblClick">
+                                        <thead>
+                                            <tr>
+                                                <th id="id61" class="table--sortable is-sorted">
+                                                    Naam
+                                                    <i class="flaticon up-1"></i>
+                                                </th>
+                                                <th>Status</th>
+                                                <th>Overeenkomst afgehandeld</th>
+                                                <th id="id62" class="table--sortable">
+                                                    Begindatum
+                                                    <i class="flaticon"></i>
+                                                </th>
+                                                <th id="id63" class="table--sortable">
+                                                    Einddatum
+                                                    <i class="flaticon"></i>
+                                                </th>
+                                                <th>Nog goed te keuren uren</th>
+                                                <th>Stagevoortgang</th>
+                                                <th>Uw rol</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="data" id="id72">
+                                            <tr id="id73">
+                                                <td>
+                                                    <div>
+                                                        <a>
+                                                            <p>
+                                                                <a href="user.php?id=<?php echo $row['id'] ?>">
+                                                                    <?php echo $row['username'] ?>
+                                                                </a>
+                                                            </p>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td class="s5-has-label">
+                                                    <span class="s5-tag-label task-completed">Actief</span>
+                                                </td>
+                                                <td>Ja</td>
+                                                <td>
+                                                    <time><?php echo $row['begin_datum'] ?></time>
+                                                </td>
+                                                <td>
+                                                    <time><?php echo $row['eind_datum'] ?></time>
+                                                </td>
+                                                <td>Ja</td>
+                                                <td>
+                                                    <div class="student-progress">
+                                                        <div class="student-progress--bar">
+                                                            <span class="student-progress--average"><small> <?php echo $row['totaal'] ?>/ <?php echo $row['totale_uren_stage']; ?> uur afgerond</small></span>
+                                                            <div class="student-progress--expected"></div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>Contactpersoon, Praktijkbegeleider</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         <?php endforeach; ?>
+
+                        <div class="popout">
+                            <div class="popout--body popout--aside emoticon--wrapper">
+                                <div class="popout--emotion is-happy">
+                                    <i class="emoticon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="popout--options">
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <?php if (!isset($users)) :
@@ -149,4 +201,4 @@ $conn->close();
             </section>
         </div>
     </div>
-<?php include "footer.php"; ?>
+    <?php include "footer.php"; ?>
