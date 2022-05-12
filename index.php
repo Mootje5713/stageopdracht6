@@ -220,8 +220,8 @@ $days[6] = "za";
                             <small class="log--accept-message" id="id28"></small>
                             <small class="log--accept-total-hours">Totaal:<?php echo $totaal ?>u</small>
                         </div>
-                        <button onclick="window.location.href='index.php?page=<?php echo $i + 1 ?>'">Vorige week</button>
-                        <button onclick="window.location.href='index.php?page=<?php echo $i - 1 ?>'">Volgende week</button>
+                        <a class="btn btn-pri" onclick="window.location.href='index.php?page=<?php echo $i + 1 ?>'">Vorige week</a>
+                        <a class="btn btn-pri" onclick="window.location.href='index.php?page=<?php echo $i - 1 ?>'">Volgende week</a>
                     </div>
                 </div>
         </div>
