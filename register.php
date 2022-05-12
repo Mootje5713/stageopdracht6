@@ -26,7 +26,7 @@ if (
     $totale_uren_stage = $_POST['totale_uren_stage'];
     $praktijkbegeleider_user_id = $_POST['praktijkbegeleider_user_id'];
     $user = "INSERT INTO `users`(username, wachtwoord, begin_datum, eind_datum, totale_uren_stage, praktijkbegeleider_user_id)
-        VALUES ('$username', '$password', '$totale_uren_stage', '$begin_datum', '$eind_datum', '$praktijkbegeleider_user_id')";
+        VALUES ('$username', '$password', '$begin_datum', '$eind_datum', '$totale_uren_stage', '$praktijkbegeleider_user_id')";
     if ($conn->query($user) === FALSE) {
         echo "error" . $user . "<br />" . $conn->error;
     } else {
@@ -126,16 +126,16 @@ $conn->close();
             <div class="authenticator--panel">
                 <form action="" method="POST">
                     <div class="authenticator--form-field">
-                        <input type="text" value="" name="username" id="id6" placeholder="Gebruikersnaam" class="" />
+                        <input type="text" value="" name="username" id="id6" placeholder="Gebruikersnaam" required>
                     </div>
                     <div class="authenticator--form-field">
-                        <input type="text" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" class="" />
+                        <input type="password" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" required>
                     </div>
                     <div class="authenticator--form-field">
-                        <input type="date" value="" name="begin_datum" id="id6" placeholder="begin_datum" class="" />
+                        <input type="date" value="" name="begin_datum" id="id6" placeholder="begin_datum" required>
                     </div>
                     <div class="authenticator--form-field">
-                        <input type="date" value="" name="eind_datum" id="id6" placeholder="eind_datum" class="" />
+                        <input type="date" value="" name="eind_datum" id="id6" placeholder="eind_datum" required>
                     </div>
                     <div class="authenticator--form-field">
                         <select name="praktijkbegeleider_user_id" id="praktijkbegeleider_user_id">

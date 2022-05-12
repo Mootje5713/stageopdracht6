@@ -150,69 +150,82 @@ $days[6] = "za";
                             <span><?php echo $weekdisplay; ?></span>
                             <span class="is-soft"><?php echo " / " . "Week " . $weeknumber; ?></span>
                         </h2>
-                        <div class="tasks tasks-planning" id="id7">
-                            <div class="week-plan">
-                                <span class="week-plan--title">?</span>
-                                <div class="task task--empty">
-                                    <div class="task--summary">
-                                        <p>Er is nog geen log op deze dag</p>
-                                        <small class="task--summary-meta"><a class="js-toggle-popover-log" id="id14" href="addreport.php"><i class="flaticon compose-2"></i></a></small>
+                        <?php if (!isset($report)) :
+                            echo "
+                            <div class='tasks tasks-planning' id='id7'>
+                                <div class='week-plan'>
+                                    <span class='week-plan--title'>?</span>
+                                    <div class='task task--empty'>
+                                        <div class=task--summary>
+                                            <p>Er is nog geen log op deze dag</p>
+                                            <small class=task--summary-meta><a class=js-toggle-popover-log id=id14 href=addreport.php><i class='flaticon compose-2'></i></a></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>";
+                        else :
+                        ?>
+                            <div class="tasks tasks-planning" id="id7">
+                                <div class="week-plan">
+                                    <span class="week-plan--title">?</span>
+                                    <div class="task task--empty">
+                                        <div class=task--summary>
+                                            <p>Er is nog geen log op deze dag</p>
+                                            <small class=task--summary-meta><a class=js-toggle-popover-log id=id14 href=addreport.php><i class="flaticon compose-2"></i></a></small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <?php foreach ($report as $row) : ?>
-                            <?php if (($row['deleted']) == '') : ?>
-                                <!-- weekplan loop -->
-                                <div class="week-plan">
-                                    <span class="week-plan--title"><?php echo $days[date_format(date_create($row['timestamp']), "w")]; ?></span>
-                                    <div class="task has-popout">
-                                        <div class="task--summary popout--toggle js-popout-toggle">
-                                            <p>
-                                                <span>
-                                                    <?php echo $row['verslag'] ?>
-                                                </span>
-                                            </p>
-                                            <small class="task--summary-meta"><span>
-                                                    <?php echo $row['uren'] ?>u</span></small>
-                                            <div class="task--summary-status">
-                                                <?php if ($row['is_accepted'] == NULL) : ?>
-                                                    <span class="s5-tag-label">Ingediend</span>
-                                                <?php else : ?>
-                                                    <span class="s5-tag-label s5-label--success">Akkoord</span>
-                                                <?php endif; ?>
-                                            </div>
-                                        </div>
-                                        <div class="popout">
-                                            <div class="popout--body popout--aside emoticon--wrapper">
-                                                <div class="popout--emotion is-happy">
-                                                    <i class="emoticon"></i>
+                            <?php foreach ($report as $row) : ?>
+                                <?php if (($row['deleted']) == '') : ?>
+                                    <div class="week-plan">
+                                        <span class="week-plan--title"><?php echo $days[date_format(date_create($row['timestamp']), "w")]; ?></span>
+                                        <div class="task has-popout">
+                                            <div class="task--summary popout--toggle js-popout-toggle">
+                                                <p>
+                                                    <span>
+                                                        <?php echo $row['verslag'] ?>
+                                                    </span>
+                                                </p>
+                                                <small class="task--summary-meta"><span>
+                                                        <?php echo $row['uren'] ?>u</span></small>
+                                                <div class="task--summary-status">
+                                                    <?php if ($row['is_accepted'] == NULL) : ?>
+                                                        <span class="s5-tag-label">Ingediend</span>
+                                                    <?php else : ?>
+                                                        <span class="s5-tag-label s5-label--success">Akkoord</span>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
-                                            <div class="popout--options">
-                                                <ul>
-                                                    <li></li>
-                                                    <li></li>
-                                                    <li></li>
-                                                </ul>
+                                            <div class="popout">
+                                                <div class="popout--body popout--aside emoticon--wrapper">
+                                                    <div class="popout--emotion is-happy">
+                                                        <i class="emoticon"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="popout--options">
+                                                    <ul>
+                                                        <li></li>
+                                                        <li></li>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- end loop; -->
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                         <div class="log--accept">
                             <small class="log--accept-message" id="id28"></small>
                             <small class="log--accept-total-hours">Totaal:<?php echo $totaal ?>u</small>
                         </div>
-                        <br>
                         <button onclick="window.location.href='index.php?page=<?php echo $i + 1 ?>'">Vorige week</button>
                         <button onclick="window.location.href='index.php?page=<?php echo $i - 1 ?>'">Volgende week</button>
                     </div>
                 </div>
-            </div>
         </div>
+    </div>
     </section>
     </div>
-<?php include "footer.php"; ?>
+    <?php include "footer.php"; ?>

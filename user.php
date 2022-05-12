@@ -37,7 +37,18 @@ if ($result === false) {
 } else {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $totaal[] = $row;
+            $totaal = intval($row['totaal']);
+        }
+    }
+}
+$query2 = "SELECT * FROM `users` WHERE id = " . $_GET["id"] . "";
+$result = $conn->query($query2);
+if ($result === FALSE) {
+    echo "error" . $query2 . "<br />" . $conn->error;
+} else {
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $user = $row;
         }
     }
 }
@@ -56,6 +67,7 @@ $days[3] = "wo";
 $days[4] = "do";
 $days[5] = "vr";
 $days[6] = "za";
+
 ?>
 
 <!DOCTYPE html>
@@ -88,84 +100,115 @@ $days[6] = "za";
     <link rel="stylesheet" type="text/css" href="https://talnet-student.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/stylesheets/styles-ver-1650447270000.css" />
     <script type="text/javascript" src="https://talnet-student.educus.nl/wicket/resource/nl.topicus.eduario.web.pages.AbstractEduArioPage/jquery.viewport.mini-ver-1650447270000.js"></script>
 </head>
-
-<body>
-    <div class="l-container">
+<div class="l-container">
+    <nav class="navigation navigation--docent">
         <div class="navigation-header">
             <div class="navigation-header--logo">
-                <a><img src="https://talnet-student.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/img/logo-eduarte-ver-1650447256000.svg" alt="EduArtelogo"></a>
+                <a><img src="https://talnet-student.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/img/logo-eduarte-ver-1650447256000.svg" alt="EduArtelogo" /></a>
             </div>
             <div class="omgevingIndicator productieomgeving"></div>
-            <i class="navigation-header--close-navigation js-navigation flaticon x-1" id="id1f"></i>
+            <i class="navigation-header--close-navigation js-navigation flaticon x-1" id="ida2"></i>
         </div>
-        <div class="l-flex-content">
-            <div class="header">
-                <h2>
-                    <a href="manual.php">
-                        Stage
+        <div class="navigation-items">
+            <ul class="navigation-items--main">
+                <li><a href="#" title="Dashboard"><i class="flaticon house"></i>Dashboard</a></li>
+                <li><a href="#" title="Stageplaatsen"><i class="flaticon toolbox"></i>Stageplaatsen</a></li>
+                <li class="is-selected"><a href="manual.php" title="Stagiairs"><i class="flaticon group-1"></i>Stagiairs</a></li>
+            </ul>
+        </div>
+        <div class="navigation-footer">
+            <ul>
+                <li>
+                    <a href="https://talnet-bedrijf.educus.nl/account" title="Profiel">
+                        <i class="flaticon user-2"></i>
+                    </a>
+                </li>
+                <li>
+                <li><a href="logout.php" title="Uitloggen"><i class="flaticon logout"></i></a></li>
+                <i class="flaticon logout"></i>
+                </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="l-flex-content">
+        <header class="header">
+            <div class="header-toolbar">
+                <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="ida4"></i>
+                <h1>
+                    <a href="#">
+                        <span class="is-dynamic is-lastcrumb"><?php echo $user['username']; ?></span>
                     </a>
                     <i class="flaticon right-2"></i>
-                    <span class="is-fixed is-lastcrumb is-single">Stagiairs</span>
-                </h2>
+                    <span class="is-fixed is-lastcrumb is-single">Logboek</span>
+                </h1>
             </div>
-            <h2 class="is-header">
-                <span><?php echo $weekdisplay; ?></span>
-                <span class="is-soft"><?php echo " / " . "Week " . $weeknumber; ?></span>
-            </h2>
-            <?php foreach ($totaal as $row) : ?>
-                <?php if ($row['totaal'] == 0) : ?>
-                    <p>Deze stagiar heeft deze week 0 uren gemaakt</p>
-                <?php else : ?>
-                    <p>Deze stagiar heeft deze week in totaal <?php echo $row['totaal'] ?> uren gemaakt</p>
-                <?php endif; ?>
-            <?php endforeach; ?>
-            <?php if (!isset($report)) :
-                echo "<h3>Nog geen verslagen of uren ingevuld!!</h3>";
-            else :
-            ?>
-                <?php foreach ($report as $row) : ?>
-                    <div class="tasks tasks-planning" id="id7">
-                        <div class="week-plan">
-                            <div class="task has-popout">
-                                <div class="task--summary popout--toggle js-popout-toggle">
-                                    <span class="week-plan--title"><?php echo $days[date_format(date_create($row['timestamp']), "w")]; ?></span>
-                                    <p>
-                                        <?php if (($row['deleted']) == '') : ?>
-                                            <span>
-                                                <?php echo $row['verslag'] ?>
-                                            </span>
-                                        <?php else : ?>
-                                            <button class="btn" onclick="window.location.href='undelete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag terughalen</button>
-                                            <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='erase_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Definitief Verwijderen</button>
-                                        <?php endif; ?>
-                                        <?php if ($row['uren'] <= 1) : ?>
-                                    <h2> een uur stage gelopen</h2>
-                                    <h2><?php echo $row['timestamp']; ?></h2>
-                                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag verwijderen</button>
-                                <?php else : ?>
-                                    <p><?php echo $row['uren'] ?> uur stage gelopen</p>
-                                    &nbsp;
-                                    <p><?php echo $row['timestamp']; ?></p>
-                                    <button class="btn" onclick="window.location.href='delete_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stagedag verwijderen</button>
-                                <?php endif; ?>
-                                </p>
+            <div class="header-tabs" id="ida3">
+                <ul style="transition: none 0s ease 0s;">
+                    <li class="is-selected">
+                        <a href="#" title="Stagiair">Stagiair</a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <div class="popover defaultPopoverWidth" id="idc0">
+        </div>
+        <aside class="s5-aside-slidebar">
+            <div id="idc1" style="display:none"></div>
+        </aside>
+        <section class="content-wrapper js-scroll-wrapper" style="margin-top: 0px;">
+            <div id="ida1">
+            </div>
+            <div class="content l-medium" id="idc2">
+                <div class="content--part" id="idc3">
+                    <h2 class="is-header">
+                        <span><?php echo $weekdisplay; ?></span>
+                        <span class="is-soft"><?php echo " / " . "Week " . $weeknumber; ?></span>
+                    </h2>
+                    <?php if (!isset($report)) :
+                        echo "<h3>Nog geen verslagen of uren ingevuld!!</h3>";
+                    else :
+                    ?>
+                        <?php foreach ($report as $row) : ?>
+                            <div class="tasks tasks-planning" id="id7">
+                                <div class="week-plan">
+                                    <div class="task has-popout">
+                                        <div class="task--summary popout--toggle js-popout-toggle">
+                                            <span class="week-plan--title"><?php echo $days[date_format(date_create($row['timestamp']), "w")]; ?></span>
+                                            <p>
+                                                <span>
+                                                    <?php echo $row['verslag']; ?>
+                                                </span>
+                                            </p>
+
+                                            <small class="task--summary-meta">
+                                                <div>
+                                                    <?php if ($row['is_accepted'] == !NULL) : ?>
+                                                        <span>
+                                                            <?php echo $row['uren']; ?>u ✓&nbsp;
+                                                        </span>
+                                                        <a class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
+                                                    <?php else : ?>
+                                                        <a class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
+                                                        <a class="button-action" id="ida6" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Akkoord</a>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <button class="btn" onclick="window.location.href='updateverslag_pb.php?id=<?php echo $row['id'] ?>'">Stageverslag wijzigen</button>
-                        <button class="btn" onclick="window.location.href='updateuren_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Stageuren wijzigen</button>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <div class="log--accept">
+                        <small class="log--accept-message" id="id28"></small>
+                        <small class="log--accept-total-hours">Totaal:<?php echo $totaal ?>u</small>
                     </div>
-                    <button class="btn" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Goedkeuren</button>
-                    <br>
-                    <br>
-                <?php endforeach; ?>
-            <?php endif; ?>
-            <button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i + 1 ?>'">
-                Vorige week</button>
-            <button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i - 1 ?>'">
-                Volgende week</button>
-            <br>
-            <br>
-        </div>
-    </div>
-    <?php include "footer.php" ?>
+                    <button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i + 1 ?>'">
+                        Vorige week</button>
+                    <button class="btn" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i - 1 ?>'">
+                        Volgende week</button>
+                </div>
+            </div>
+        </section>
+        <?php include "footer.php" ?>

@@ -27,7 +27,7 @@
 			</div>
 			<div class="s5-btn-row">
 				<a class="btn btn-pri" href="index.php">Annuleren</a>
-				<button class="btn btn-pri" name="submit">Verstuur</button>
+				<button class="btn btn-pri" name="submit">Opslaan</button>
 			</div>
 		</form>
 	</div>

@@ -61,10 +61,10 @@ Wicket.Event.publish(Wicket.Event.Topic.AJAX_HANDLERS_BOUND);
 		<div class="authenticator--panel">
             <form action="" method="POST">
             <div class="authenticator--form-field">
-				<input type="text" value="" name="username" id="id6" placeholder="Gebruikersnaam" class=""/>
+				<input type="text" value="" name="username" id="id6" placeholder="Gebruikersnaam" required>
 			</div>
             <div class="authenticator--form-field">
-				<input type="text" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" class=""/>
+				<input type="text" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" required>
 			</div>
             <input style="background: #0bca6a; border: 0;" type="submit" class="button-action authenticator--submit" id="id4" name="submit" value="Registreer">
         </form>
