@@ -1,5 +1,6 @@
 <?php
-include "connection.php"; 
+include "connection.php";
+include "functions.php"; 
 if (isset($_GET['id'])) {
     $query = "SELECT verslag, user_id FROM `reports` WHERE id = ". $_GET['id'] . "";
     $result = $conn->query($query);
@@ -24,6 +25,7 @@ if (isset($_POST['submit'])) {
     if ( $result === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;
     } else {
+        updateTotaluren($user_id, $conn);
         header("Location: user.php?id=" .$user_id . "");
     }
 }
@@ -53,6 +55,7 @@ if (isset($_POST['submit'])) {
     if ($result === FALSE) {
         echo "error" . $query . "<br />" . $conn->error;
     } else {
+        updateTotaluren($user_id, $conn);
         header("Location: user.php?id=" . $user_id . "");
     }
 }

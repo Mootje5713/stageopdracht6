@@ -86,6 +86,7 @@ $days[6] = "za";
     <meta name="author" content="Iddink Group" />
     <title>Logboek - EduArte Portalen</title>
     <link rel="stylesheet" type="text/css" href="https://talnet-student.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/stylesheets/styles-ver-1650447270000.css" />
+    <link rel="stylesheet" type="text/css" href="fonts.css" />
     <script type="text/javascript" src="https://talnet-student.educus.nl/wicket/resource/nl.topicus.eduario.web.pages.AbstractEduArioPage/jquery.viewport.mini-ver-1650447270000.js"></script>
 </head>
 
@@ -177,43 +178,41 @@ $days[6] = "za";
                                 </div>
                             </div>
                             <?php foreach ($report as $row) : ?>
-                                <?php if (($row['deleted']) == '') : ?>
-                                    <div class="week-plan">
-                                        <span class="week-plan--title"><?php echo $days[date_format(date_create($row['timestamp']), "w")]; ?></span>
-                                        <div class="task has-popout">
-                                            <div class="task--summary popout--toggle js-popout-toggle">
-                                                <p>
-                                                    <span>
-                                                        <?php echo $row['verslag'] ?>
-                                                    </span>
-                                                </p>
-                                                <small class="task--summary-meta"><span>
-                                                        <?php echo $row['uren'] ?>u</span></small>
-                                                <div class="task--summary-status">
-                                                    <?php if ($row['is_accepted'] == NULL) : ?>
-                                                        <span class="s5-tag-label">Ingediend</span>
-                                                    <?php else : ?>
-                                                        <span class="s5-tag-label s5-label--success">Akkoord</span>
-                                                    <?php endif; ?>
+                                <div class="week-plan">
+                                    <span class="week-plan--title"><?php echo $days[date_format(date_create($row['timestamp']), "w")]; ?></span>
+                                    <div class="task has-popout">
+                                        <div class="task--summary popout--toggle js-popout-toggle">
+                                            <p>
+                                                <span>
+                                                    <?php echo $row['verslag'] ?>
+                                                </span>
+                                            </p>
+                                            <small class="task--summary-meta"><span>
+                                                    <?php echo $row['uren'] ?>u</span></small>
+                                            <div class="task--summary-status">
+                                                <?php if ($row['is_accepted'] == NULL) : ?>
+                                                    <span class="s5-tag-label">Ingediend</span>
+                                                <?php else : ?>
+                                                    <span class="s5-tag-label s5-label--success">Akkoord</span>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
+                                        <div class="popout">
+                                            <div class="popout--body popout--aside emoticon--wrapper">
+                                                <div class="popout--emotion is-happy">
+                                                    <i class="emoticon"></i>
                                                 </div>
                                             </div>
-                                            <div class="popout">
-                                                <div class="popout--body popout--aside emoticon--wrapper">
-                                                    <div class="popout--emotion is-happy">
-                                                        <i class="emoticon"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="popout--options">
-                                                    <ul>
-                                                        <li></li>
-                                                        <li></li>
-                                                        <li></li>
-                                                    </ul>
-                                                </div>
+                                            <div class="popout--options">
+                                                <ul>
+                                                    <li></li>
+                                                    <li></li>
+                                                    <li></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                <?php endif; ?>
+                                </div>
                             <?php endforeach; ?>
                         <?php endif; ?>
                         <div class="log--accept">

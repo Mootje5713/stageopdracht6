@@ -98,6 +98,7 @@ $days[6] = "za";
     <meta name="author" content="Iddink Group" />
     <title>Logboek - EduArte Portalen</title>
     <link rel="stylesheet" type="text/css" href="https://talnet-student.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/stylesheets/styles-ver-1650447270000.css" />
+    <link rel="stylesheet" type="text/css" href="fonts.css" />
     <script type="text/javascript" src="https://talnet-student.educus.nl/wicket/resource/nl.topicus.eduario.web.pages.AbstractEduArioPage/jquery.viewport.mini-ver-1650447270000.js"></script>
 </head>
 <div class="l-container">
@@ -136,11 +137,11 @@ $days[6] = "za";
             <div class="header-toolbar">
                 <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="ida4"></i>
                 <h1>
-                    <a href="#">
-                        <span class="is-dynamic is-lastcrumb"><?php echo $user['username']; ?></span>
+                    <a href="manual.php">
+                        <span class="is-fixed is-lastcrumb is-single">Stagiairs</span>
                     </a>
                     <i class="flaticon right-2"></i>
-                    <span class="is-fixed is-lastcrumb is-single">Logboek</span>
+                    <span class="is-dynamic is-lastcrumb"><?php echo $user['username']; ?></span>
                 </h1>
             </div>
             <div class="header-tabs" id="ida3">

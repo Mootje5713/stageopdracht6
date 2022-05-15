@@ -27,7 +27,7 @@
 			</div>
 			<div class="s5-btn-row">
 				<a class="btn btn-pri" href="index.php">Annuleren</a>
-				<button class="btn btn-pri" name="submit" onclick="if(confirm('Weet je het zeker'))window.location.href='index.php'">Opslaan</button>
+				<button class="btn btn-pri" id="ida6" name="submit" onclick="if(confirm('Weet je het zeker'))window.location.href='index.php'">Opslaan</button>
 			</div>
 		</form>
 	</div>

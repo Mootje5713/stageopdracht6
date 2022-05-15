@@ -4,6 +4,7 @@ include "functions.php";
 if (isset($_SESSION['praktijkbegeleider_user_id'])) {
     header("Location: index.php");
 }
+
 $query = "SELECT * FROM `users` WHERE praktijkbegeleider_user_id = " . $_SESSION["user_id"] . "";
 $result = $conn->query($query);
 if ($result === FALSE) {
@@ -11,11 +12,12 @@ if ($result === FALSE) {
 } else {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $row['percentage'] = round(($row['totaal'] / $row['totale_uren_stage']) * 100);
+            $percentage = $row['percentage'] = round(($row['totaal'] / $row['totale_uren_stage']) * 100);
             $users[] = $row;
         }
     }
 }
+
 $conn->close();
 
 ?>
@@ -48,6 +50,7 @@ $conn->close();
     <meta name="author" content="Iddink Group" />
     <title>stagiairs - EduArte Portalen</title>
     <link rel="stylesheet" type="text/css" href="https://talnet-student.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/stylesheets/styles-ver-1650447270000.css" />
+    <link rel="stylesheet" type="text/css" href="fonts.css" />
     <script type="text/javascript" src="https://talnet-student.educus.nl/wicket/resource/nl.topicus.eduario.web.pages.AbstractEduArioPage/jquery.viewport.mini-ver-1650447270000.js"></script>
 </head>
 
@@ -80,11 +83,9 @@ $conn->close();
                 <div class="header-toolbar">
                     <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="id4"></i>
                     <h1>
-                        <a href="manual.php">
-                            <span class="is-fixed is-lastcrumb">Stage</span>
+                        <a href="#">
+                            <span class="is-fixed is-lastcrumb">Stagiairs</span>
                         </a>
-                        <i class="flaticon right-2"></i>
-                        <span class="is-fixed is-lastcrumb is-single">stagiairs</span>
                     </h1>
                 </div>
             </header>
@@ -152,7 +153,7 @@ $conn->close();
                                             <div class="student-progress">
                                                 <div class="student-progress--bar">
                                                     <span class="student-progress--average"><small><?php echo $row['totaal'] ?> van <?php echo $row['totale_uren_stage']; ?></small></span>
-                                                    <div class="student-progress--achieved" style="width: <?php echo $row['percentage']; ?>%;"></div>
+                                                    <div class="student-progress--achieved" style="width: <?php echo $row['percentage'] ?>%;"></div>
                                                     <div class="student-progress--expected"></div>
                                                 </div>
                                             </div>
