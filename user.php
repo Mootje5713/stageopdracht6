@@ -11,6 +11,8 @@ if (isset($_GET['report'])) {
 
     if ($conn->query($report) === FALSE) {
         echo "error" . $report . "<br />" . $conn->error;
+    } else {
+        updateTotaluren($user_id, $conn);
     }
 }
 if (isset($_GET['page'])) {
@@ -147,7 +149,7 @@ $days[6] = "za";
             <div class="header-tabs" id="ida3">
                 <ul style="transition: none 0s ease 0s;">
                     <li class="is-selected">
-                        <a href="#" title="Stagiair">Stagiair</a>
+                        <a href="#" title="Logboek">Logboek</a>
                     </li>
                 </ul>
             </div>
@@ -170,8 +172,9 @@ $days[6] = "za";
                         echo "<h3>Nog geen verslagen of uren ingevuld!!</h3>";
                     else :
                     ?>
-                        <?php foreach ($report as $row) : ?>
-                            <div class="tasks tasks-planning" id="id7">
+                        <div class="tasks tasks-planning" id="id7">
+                            <?php foreach ($report as $row) : ?>
+
                                 <div class="week-plan">
                                     <div class="task has-popout">
                                         <div class="task--summary popout--toggle js-popout-toggle">
@@ -188,26 +191,26 @@ $days[6] = "za";
                                                         <span>
                                                             <?php echo $row['uren']; ?>u ✓&nbsp;
                                                         </span>
-                                                        <a class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
+                                                        <a href="#" class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
                                                     <?php else : ?>
-                                                        <a class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
-                                                        <a class="button-action" id="ida6" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Akkoord</a>
+                                                        <a href="#" class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
+                                                        <a href="#" class="button-action" id="ida6" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Akkoord</a>
                                                     <?php endif; ?>
                                                 </div>
                                             </small>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
+                        </div>
                     <?php endif; ?>
                     <div class="log--accept">
                         <small class="log--accept-message" id="id28"></small>
-                        <small class="log--accept-total-hours">Totaal:<?php echo $totaal ?>u</small>
+                        <small class="log--accept-total-hours">Totaal: <?php echo $totaal ?>u</small>
                     </div>
-                    <a class="btn btn-pri" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i + 1 ?>'">
+                    <a href="#" class="btn btn-pri" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i + 1 ?>'">
                         Vorige week</a>
-                    <a class="btn btn-pri" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i - 1 ?>'">
+                    <a href="#" class="btn btn-pri" onclick="window.location.href='user.php?id=<?php echo $_GET['id']; ?>&page=<?php echo $i - 1 ?>'">
                         Volgende week</a>
                 </div>
             </div>

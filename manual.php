@@ -4,7 +4,6 @@ include "functions.php";
 if (isset($_SESSION['praktijkbegeleider_user_id'])) {
     header("Location: index.php");
 }
-
 $query = "SELECT * FROM `users` WHERE praktijkbegeleider_user_id = " . $_SESSION["user_id"] . "";
 $result = $conn->query($query);
 if ($result === FALSE) {
@@ -84,7 +83,7 @@ $conn->close();
                     <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="id4"></i>
                     <h1>
                         <a href="#">
-                            <span class="is-fixed is-lastcrumb">Stagiairs</span>
+                            <span class="is-dynamic is-lastcrumb" style="color:white">Stagiairs</span>
                         </a>
                     </h1>
                 </div>

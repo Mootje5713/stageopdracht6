@@ -12,7 +12,7 @@ if ($result === FALSE) {
     }
 }
 if (
-    isset($_POST['username']) 
+    isset($_POST['username'])
     && ($_POST['wachtwoord'])
     && ($_POST['begin_datum'])
     && ($_POST['eind_datum'])
@@ -57,6 +57,7 @@ $conn->close();
     <meta name="description" content="EduArte Portalen" />
     <meta name="author" content="Iddink Group" />
     <link rel="stylesheet" type="text/css" href="https://login.educus.nl/wicket/resource/assets.AssetsResourceReferenceMarker/stylesheets/styles-ver-791C75DF32208B3036D6915808D48FEE.css" />
+    <link rel="stylesheet" type="text/css" href="fonts.css" />
     <script type="text/javascript">
         /*<![CDATA[*/
         Wicket.Event.add(window, "domready", function(event) {
