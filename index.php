@@ -129,7 +129,9 @@ $days[6] = "za";
                 </div>
                 <div class="header-tabs" id="id3">
                     <ul style="transition: none 0s ease 0s;">
-                        <li><a href="#" title="Logboek">Logboek</a></li>
+                        <li class="is-selected">
+                            <a href="#" title="Logboek">Logboek</a>
+                        </li>
                     </ul>
                     <span class="header-tabs--toggle"><i class="flaticon menu-2"></i></span>
                 </div>

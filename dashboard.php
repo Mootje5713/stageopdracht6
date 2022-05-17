@@ -47,7 +47,7 @@
         <div class="navigation-footer">
             <ul>
                 <li>
-                    <a href="dashboard_pb.php" title="Profiel">
+                    <a href="dashboard.php" title="Profiel">
                         <i class="flaticon user-2"></i>
                     </a>
                 </li>
