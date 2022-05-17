@@ -1,12 +1,15 @@
-<section class="authenticator--wrapper" style="background-color: rgba(0, 0, 0, 0.25);">
+<section class="authenticator--wrapper" style="background-color: rgba(0, 0, 0, 0.25);" onclick="window.location.href='index.php'">
 	<div class="authenticator--body is-small">
 		<div class="authenticator--panel">
-			<div class="popover defaultPopoverWidth is-open" id="id14">
+			<div class="popover defaultPopoverWidth is-open" id="id14" onclick="event.stopPropagation();">
 				<div class="popover-tittle">
 					<h2>Log schrijven - </h2>
 				</div>
-				<div class="popover-content">
-					<form method="post" action="">
+
+				<form method="post" action="" style="margin: 0;">
+					<div class="popover-content">
+
+
 						<div id="idd0">
 							Selecteer een datum: <input type="date" name="timestamp" required>
 							<fieldset class="popover--panel">
@@ -28,12 +31,13 @@
 								</div>
 							</fieldset>
 						</div>
-						<div class="s5-btn-row">
-							<a href="index.php" class="btn btn-pri">Annuleren</a>
-							<button style="background: #0bca6a; border: 0;" class="btn btn-pri" id="ida6" name="submit" onclick="if(confirm('Weet je het zeker'))window.location.href='index.php'">Opslaan</button>
-						</div>
-					</form>
-				</div>
+					</div>
+					<div class="s5-btn-row">
+						<a href="index.php" class="btn btn-pri">Annuleren</a>
+						<button style="background: #0bca6a; border: 0;" class="btn btn-pri" id="ida6" name="submit" onclick="if(confirm('Weet je het zeker'))window.location.href='index.php'">Opslaan</button>
+					</div>
+				</form>
 			</div>
 		</div>
+	</div>
 </section>

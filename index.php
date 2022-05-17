@@ -102,17 +102,13 @@ $days[6] = "za";
             </div>
             <div class="navigation-items">
                 <ul class="navigation-items--main">
-                    <li><a href="index.php" title="Dashboard"><i class="flaticon house"></i>Dashboard</a></li>
-
+                    <li><a href="dashboard.php" title="Dashboard"><i class="flaticon house"></i>Dashboard</a></li>
                     <li class="is-selected"><a href="index.php" title="Stage"><i class="flaticon suitcase-1"></i>Stage</a></li>
-
-                    <li><a href="manual.php" title="Stagiairs"><i class="flaticon open-book-2"></i>Stagiairs</a></li>
-
                 </ul>
             </div>
             <div class="navigation-footer">
                 <ul>
-                    <li><a href="#" title="Profiel"><i class="flaticon user-2"></i></a></li>
+                    <li><a href="dashboard.php" title="Profiel"><i class="flaticon user-2"></i></a></li>
                     <li><a href="logout.php" title="Uitloggen"><i class="flaticon logout"></i></a></li>
                 </ul>
             </div>
@@ -122,18 +118,18 @@ $days[6] = "za";
                 <div class="header-toolbar">
                     <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="id4"></i>
                     <h1>
-                        <a href="index.php">
-                            <span class="is-fixed is-lastcrumb">Stage</span>
+                        <a href="Dashboard.php">
+                            <span class="is-fixed is-lastcrumb is-single">Dashboard</span>
                         </a>
                         <i class="flaticon right-2"></i>
-                        <span class="is-fixed is-lastcrumb is-single">Logboek</span>
+                        <a href="index.php">
+                            <span class="is-fixed is-lastcrumb is-single" style="color: white">Stage</span>
+                        </a>
                     </h1>
                 </div>
                 <div class="header-tabs" id="id3">
                     <ul style="transition: none 0s ease 0s;">
-                        <li class="is-selected"><a href="#" title="Logboek">Logboek</a></li>
-                        <li><a href="#" title="Dossier">Dossier</a></li>
-                        <li><a href="#" title="Info">Info</a></li>
+                        <li><a href="#" title="Logboek">Logboek</a></li>
                     </ul>
                     <span class="header-tabs--toggle"><i class="flaticon menu-2"></i></span>
                 </div>

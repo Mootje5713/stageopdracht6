@@ -21,9 +21,9 @@
     }
     if (isset($_SESSION['user_id'])) {
         if (isset($_SESSION['praktijkbegeleider_user_id'])) {
-            header('Location: index.php');
+            header('Location: dashboard.php');
         } else {
-            header('Location: manual.php');
+            header('Location: dashboard_pb.php');
         }
     }
     $conn->close();

@@ -65,14 +65,13 @@ $conn->close();
             </div>
             <div class="navigation-items">
                 <ul class="navigation-items--main">
-                    <li><a href="index.php" title="Dashboard"><i class="flaticon house"></i>Dashboard</a></li>
-                    <li><a href="#=" title="Stageplaatsen"><i class="flaticon open-book-2"></i>Stageplaatsen</a></li>
+                    <li><a href="dashboard_pb.php" title="Dashboard"><i class="flaticon house"></i>Dashboard</a></li>
                     <li class="is-selected"><a href="index.php" title="Stagiairs"><i class="flaticon suitcase-1"></i>Stagiairs</a></li>
                 </ul>
             </div>
             <div class="navigation-footer">
                 <ul>
-                    <li><a href="#" title="Profiel"><i class="flaticon user-2"></i></a></li>
+                    <li><a href="dashboard_pb.php" title="Profiel"><i class="flaticon user-2"></i></a></li>
                     <li><a href="logout.php" title="Uitloggen"><i class="flaticon logout"></i></a></li>
                 </ul>
             </div>
@@ -82,7 +81,11 @@ $conn->close();
                 <div class="header-toolbar">
                     <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="id4"></i>
                     <h1>
-                        <a href="#">
+                        <a href="dashboard_pb.php">
+                            <span class="is-fixed is-lastcrumb is-single">Dashboard</span>
+                        </a>
+                        <i class="flaticon right-2"></i>
+                        <a href="manual.php">
                             <span class="is-dynamic is-lastcrumb" style="color:white">Stagiairs</span>
                         </a>
                     </h1>

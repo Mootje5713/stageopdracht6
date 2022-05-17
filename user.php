@@ -114,23 +114,20 @@ $days[6] = "za";
         </div>
         <div class="navigation-items">
             <ul class="navigation-items--main">
-                <li><a href="#" title="Dashboard"><i class="flaticon house"></i>Dashboard</a></li>
-                <li><a href="#" title="Stageplaatsen"><i class="flaticon toolbox"></i>Stageplaatsen</a></li>
+                <li><a href="dashboard_pb.php" title="Dashboard"><i class="flaticon house"></i>Dashboard</a></li>
                 <li class="is-selected"><a href="manual.php" title="Stagiairs"><i class="flaticon group-1"></i>Stagiairs</a></li>
             </ul>
         </div>
         <div class="navigation-footer">
             <ul>
                 <li>
-                    <a href="https://talnet-bedrijf.educus.nl/account" title="Profiel">
+                    <a href="dashboard_pb.php" title="Profiel">
                         <i class="flaticon user-2"></i>
                     </a>
                 </li>
-                <li>
                 <li><a href="logout.php" title="Uitloggen"><i class="flaticon logout"></i></a></li>
                 <i class="flaticon logout"></i>
                 </a>
-                </li>
             </ul>
         </div>
     </nav>
@@ -139,6 +136,10 @@ $days[6] = "za";
             <div class="header-toolbar">
                 <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="ida4"></i>
                 <h1>
+                    <a href="dashboard_pb.php">
+                        <span class="is-fixed is-lastcrumb is-single">Dashboard</span>
+                    </a>
+                    <i class="flaticon right-2"></i>
                     <a href="manual.php">
                         <span class="is-fixed is-lastcrumb is-single">Stagiairs</span>
                     </a>
