@@ -77,8 +77,9 @@
                                 <p>
                                     <span>
                                         <p>
-                                            Welkom beste stagiair op het portaal van talent. 
-                                            Op dit portaal kun je zien wie jouw stagebegeleider is en als je op de stage link klikt kun je stageverslagen invullen, ook kan je stageuren invullen
+                                            Welkom beste stagiair op het portaal van talent.
+                                            <br> 
+                                            Op dit portaal kun je zien wie jouw stagebegeleider is en als je op de stage link klikt kun je stageverslagen invullen, ook kan je je stageuren invullen
                                             en ook kan je een dag selecteren samen met het verslag en het aantal uur dat je hebt gemaakt.
                                         </p>
                                     </span>
