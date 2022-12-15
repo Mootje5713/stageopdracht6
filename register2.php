@@ -2,9 +2,9 @@
 include "connection.php";
 if (isset($_POST['username']) && ($_POST['wachtwoord'])) {
     $username =  $_POST['username'];
-    $password =  $_POST['wachtwoord'];
-    $user = "INSERT INTO `users`(username, wachtwoord)
-        VALUES ('$username', '$password')";
+    $wachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
+    $user = "INSERT INTO `users`(username, `wachtwoord`)
+        VALUES ('$username', '$wachtwoord')";
     if ($conn->query($user) === FALSE) {
         echo "error" . $user . "<br />" . $conn->error;
     } else {
@@ -108,7 +108,7 @@ $conn->close();
                         <input type="text" value="" name="username" id="id6" placeholder="Gebruikersnaam" required>
                     </div>
                     <div class="authenticator--form-field">
-                        <input type="text" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" required>
+                        <input type="password" value="" name="wachtwoord" id="id6" placeholder="wachtwoord" required>
                     </div>
                     <input style="background: #0bca6a; border: 0;" type="submit" class="button-action authenticator--submit" id="id4" name="submit" value="Registreer">
                 </form>

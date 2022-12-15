@@ -20,13 +20,13 @@ if (
     && ($_POST['praktijkbegeleider_user_id'])
 ) {
     $username =  $_POST['username'];
-    $password =  $_POST['wachtwoord'];
+    $wachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
     $begin_datum =  $_POST['begin_datum'];
     $eind_datum =  $_POST['eind_datum'];
     $totale_uren_stage = $_POST['totale_uren_stage'];
     $praktijkbegeleider_user_id = $_POST['praktijkbegeleider_user_id'];
-    $user = "INSERT INTO `users`(username, wachtwoord, begin_datum, eind_datum, totale_uren_stage, praktijkbegeleider_user_id)
-        VALUES ('$username', '$password', '$begin_datum', '$eind_datum', '$totale_uren_stage', '$praktijkbegeleider_user_id')";
+    $user = "INSERT INTO `users`(username, `wachtwoord`, begin_datum, eind_datum, totale_uren_stage, praktijkbegeleider_user_id)
+        VALUES ('$username', '$wachtwoord', '$begin_datum', '$eind_datum', '$totale_uren_stage', '$praktijkbegeleider_user_id')";
     if ($conn->query($user) === FALSE) {
         echo "error" . $user . "<br />" . $conn->error;
     } else {

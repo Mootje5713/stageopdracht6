@@ -118,7 +118,7 @@ $days[6] = "za";
                 <div class="header-toolbar">
                     <i class="header-toolbar--open-navigation js-navigation flaticon menu-2" id="id4"></i>
                     <h1>
-                        <a href="Dashboard.php">
+                        <a href="dashboard.php">
                             <span class="is-fixed is-lastcrumb is-single">Dashboard</span>
                         </a>
                         <i class="flaticon right-2"></i>
@@ -185,8 +185,11 @@ $days[6] = "za";
                                                     <?php echo $row['verslag'] ?>
                                                 </span>
                                             </p>
-                                            <small class="task--summary-meta"><span>
-                                                    <?php echo $row['uren'] ?>u</span></small>
+                                            <small class="task--summary-meta">
+                                                <span>
+                                                    <?php echo $row['uren'] ?>u
+                                                </span>
+                                            </small>
                                             <div class="task--summary-status">
                                                 <?php if ($row['is_accepted'] == NULL) : ?>
                                                     <span class="s5-tag-label">Ingediend</span>
