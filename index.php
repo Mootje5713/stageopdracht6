@@ -194,6 +194,7 @@ $days[6] = "za";
                                             <div class="task--summary-status">
                                                 <?php if ($row['is_accepted'] == NULL) : ?>
                                                     <span class="s5-tag-label">Ingediend</span>
+                                                    <a href="#" onclick="window.location.href='update2.php?id=<?php echo $row['id'] ?>'">Bewerken</a>
                                                 <?php else : ?>
                                                     <span class="s5-tag-label s5-label--success">Akkoord</span>
                                                 <?php endif; ?>
