@@ -120,14 +120,8 @@ $days[6] = "za";
         </div>
         <div class="navigation-footer">
             <ul>
-                <li>
-                    <a href="dashboard_pb.php" title="Profiel">
-                        <i class="flaticon user-2"></i>
-                    </a>
-                </li>
+                <li><a href="dashboard_pb.php" title="Profiel"><i class="flaticon user-2"></i></a></li>
                 <li><a href="logout.php" title="Uitloggen"><i class="flaticon logout"></i></a></li>
-                <i class="flaticon logout"></i>
-                </a>
             </ul>
         </div>
     </nav>
@@ -139,12 +133,8 @@ $days[6] = "za";
                     <a href="dashboard_pb.php">
                         <span class="is-fixed is-lastcrumb is-single">Dashboard</span>
                     </a>
-                    <i class="flaticon right-2"></i>
-                    <a href="manual.php">
-                        <span class="is-fixed is-lastcrumb is-single">Stagiairs</span>
-                    </a>
-                    <i class="flaticon right-2"></i>
-                    <span class="is-dynamic is-lastcrumb"><?php echo $user['username']; ?></span>
+                    <i class="flaticon right-2"> <a href="manual.php">Stagiairs</a><span class="is-fixed is-lastcrumb is-single"></span></i>
+                    <i class="flaticon right-2"> <span class="is-dynamic is-lastcrumb"><?php echo $user['username']; ?></span></i>
                 </h1>
             </div>
             <div class="header-tabs" id="ida3">
@@ -193,6 +183,7 @@ $days[6] = "za";
                                                             <?php echo $row['uren']; ?>u ✓&nbsp;
                                                         </span>
                                                         <a href="#" class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
+                                                        <a href="#" class="button-action" id="ida6" onclick="if(confirm('Weet je het zeker'))window.location.href='deny.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Afkeuren</a>
                                                     <?php else : ?>
                                                         <a href="#" class="button-soft" onclick="window.location.href='update_pb.php?id=<?php echo $row['id'] ?>'">Corrigeren</a>
                                                         <a href="#" class="button-action" id="ida6" onclick="if(confirm('Weet je het zeker'))window.location.href='accept_pb.php?id=<?php echo $row['id']; ?>&returnurl=<?php echo $returnurl; ?>'">Akkoord</a>

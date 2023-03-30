@@ -56,7 +56,7 @@ include "header.php";
                 </form>
             </div>
             <ul class="authenticator-signin--links">
-                <li><a href="register.php">nog geen account? klik hier</a></li>
+                <li><a href="register.php">Nog geen account? klik hier</a></li>
             </ul>
         </div>
     </section>

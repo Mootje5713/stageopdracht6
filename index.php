@@ -121,10 +121,11 @@ $days[6] = "za";
                         <a href="dashboard.php">
                             <span class="is-fixed is-lastcrumb is-single">Dashboard</span>
                         </a>
-                        <i class="flaticon right-2"></i>
-                        <a href="index.php">
-                            <span class="is-fixed is-lastcrumb is-single" style="color: white">Stage</span>
-                        </a>
+                        <i class="flaticon right-2">
+                            <a href="index.php">
+                                <span class="is-fixed is-lastcrumb is-single" style="color: white">Stage</span>
+                            </a>
+                        </i>
                     </h1>
                 </div>
                 <div class="header-tabs" id="id3">
